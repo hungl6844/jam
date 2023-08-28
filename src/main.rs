@@ -38,7 +38,7 @@ fn run_animation(animations: Res<Animations>, mut players: Query<&mut AnimationP
 fn setup(mut commands: Commands, asset_server: Res<AssetServer>) {
 
     // loads the animation here. the animations are ordered from 0 corresponding to the order of the animations in blender
-    commands.insert_resource(Animations(vec![asset_server.load("character.glb#Animation0")]));
+    commands.insert_resource(Animations(vec![asset_server.load("character_animation.glb#Animation1")]));
 
     commands.spawn(DirectionalLightBundle {
         directional_light: DirectionalLight {
@@ -50,13 +50,13 @@ fn setup(mut commands: Commands, asset_server: Res<AssetServer>) {
     });
 
     commands.spawn(Camera3dBundle {
-        transform: Transform::from_xyz(35.0, 35.0, 35.0)
+        transform: Transform::from_xyz(10.0, 10.0, 10.0)
             .looking_at(Vec3::new(0.0, 0.0, 0.0), Vec3::Y),
         ..Default::default()
     });
 
     commands.spawn(SceneBundle {
-        scene: asset_server.load("character.glb#Scene0"),
+        scene: asset_server.load("character_animation.glb#Scene0"),
         ..Default::default()
     });
 }
